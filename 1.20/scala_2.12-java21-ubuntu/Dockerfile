@@ -98,10 +98,12 @@ RUN set -ex; \
     sed -i '/taskmanager.host: localhost/d' "$CONF_FILE"; \
   fi;
 
-# download kafka-client 4.0.0 to $FLINK_HOME/lib
+# download kafka-client:4.0.0 Druid:1.2.25 mysql-connector-j:8.4.0 to $FLINK_HOME/lib
 RUN set -ex; \
   wget -nv -O "$FLINK_HOME/lib/kafka-clients-4.0.0.jar" "https://repo1.maven.org/maven2/org/apache/kafka/kafka-clients/4.0.0/kafka-clients-4.0.0.jar"; \
-  chown flink:flink "$FLINK_HOME/lib/kafka-clients-4.0.0.jar"
+  wget -nv -O "$FLINK_HOME/lib/druid-1.2.25.jar" "https://repo1.maven.org/maven2/com/alibaba/druid/1.2.25/druid-1.2.25.jar"; \
+  wget -nv -O "$FLINK_HOME/lib/mysql-connector-j-8.4.0.jar" "https://repo1.maven.org/maven2/com/mysql/mysql-connector-j/8.4.0/mysql-connector-j-8.4.0.jar"; \
+  chown flink:flink "$FLINK_HOME/lib/kafka-clients-4.0.0.jar" "$FLINK_HOME/lib/druid-1.2.25.jar" "$FLINK_HOME/lib/mysql-connector-j-8.4.0.jar"
 
 # Configure container
 COPY docker-entrypoint.sh /
