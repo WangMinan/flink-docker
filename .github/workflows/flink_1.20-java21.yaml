@@ -8,21 +8,24 @@ jobs:
   build_and_push:
     runs-on: ubuntu-latest
     steps:
-    - name: Login to Docker Hub
-      uses: docker/login-action@v3
-      with:
-        username: ${{ secrets.DOCKER_HUB_USERNAME }}
-        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Set up Docker build
-      id: buildX
-      uses: docker/setup-buildx-action@v3
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-    - name: Build and push Gateway
-      id: docker_build_gateway
-      uses: docker/build-push-action@v6
-      with:
-        context: ./1.20/scala_2.12-java21-ubuntu
-        push: true
-        platforms: linux/amd64,linux/arm64
-        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/flink:1.20.2-scala_2.12-java21
+      - name: Set up Docker build
+        id: buildX
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push Gateway
+        id: docker_build_gateway
+        uses: docker/build-push-action@v6
+        with:
+          context: ./1.20/scala_2.12-java21-ubuntu
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/flink:1.20.2-scala_2.12-java21
