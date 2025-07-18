@@ -100,19 +100,7 @@ RUN set -ex; \
 
 # Download jars and save to the Flink lib directory
 RUN set -ex; \
-  wget -nv -O $FLINK_HOME/lib/flink-shaded-jackson-2.18.2-20.0.jar "https://repo1.maven.org/maven2/org/apache/flink/flink-shaded-jackson/2.18.2-20.0/flink-shaded-jackson-2.18.2-20.0.jar"; \
-  wget -nv -O $FLINK_HOME/lib/flink-table-api-java-bridge-1.20.2.jar "https://repo1.maven.org/maven2/org/apache/flink/flink-table-api-java-bridge/1.20.2/flink-table-api-java-bridge-1.20.2.jar"; \
-  wget -nv -O $FLINK_HOME/lib/flink-table-planner-loader-1.20.2.jar "https://repo1.maven.org/maven2/org/apache/flink/flink-table-planner-loader/1.20.2/flink-table-planner-loader-1.20.2.jar"; \
-  wget -nv -O $FLINK_HOME/lib/flink-table-runtime-1.20.2.jar "https://repo1.maven.org/maven2/org/apache/flink/flink-table-runtime/1.20.2/flink-table-runtime-1.20.2.jar"; \
-  wget -nv -O $FLINK_HOME/lib/flink-connector-base-1.20.2.jar "https://repo1.maven.org/maven2/org/apache/flink/flink-connector-base/1.20.2/flink-connector-base-1.20.2.jar"; \
-  wget -nv -O $FLINK_HOME/lib/flink-connector-kafka-3.4.0-1.20.jar "https://repo1.maven.org/maven2/org/apache/flink/flink-connector-kafka/3.4.0-1.20/flink-connector-kafka-3.4.0-1.20.jar"; \
-  wget -nv -O $FLINK_HOME/lib/flink-connector-jdbc-3.3.0-1.20.jar "https://repo1.maven.org/maven2/org/apache/flink/flink-connector-jdbc/3.3.0-1.20/flink-connector-jdbc-3.3.0-1.20.jar"; \
-  wget -nv -O $FLINK_HOME/lib/flink-sql-connector-mysql-cdc-3.4.0.jar "https://repo1.maven.org/maven2/org/apache/flink/flink-sql-connector-mysql-cdc/3.4.0/flink-sql-connector-mysql-cdc-3.4.0.jar"; \
-  wget -nv -O $FLINK_HOME/lib/flink-doris-connector-1.20-25.1.0.jar "https://repo1.maven.org/maven2/org/apache/doris/flink-doris-connector-1.20/25.1.0/flink-doris-connector-1.20-25.1.0.jar"; \
-  wget -nv -O $FLINK_HOME/lib/mysql-connector-j-8.4.0.jar "https://repo1.maven.org/maven2/com/mysql/mysql-connector-j/8.4.0/mysql-connector-j-8.4.0.jar"
-
-# Copy user jars from ./extra-jars to the Flink lib directory
-COPY extra-jars/* $FLINK_HOME/lib/
+  wget -nv -O $FLINK_HOME/lib/mysql-connector-j-8.4.0.jar "https://repo1.maven.org/maven2/com/mysql/mysql-connector-j/8.4.0/mysql-connector-j-8.4.0.jar";
 
 # Configure container
 COPY docker-entrypoint.sh /
