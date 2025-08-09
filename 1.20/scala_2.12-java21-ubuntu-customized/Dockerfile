@@ -21,7 +21,7 @@ FROM eclipse-temurin:21-jre-jammy
 # Install dependencies
 RUN set -ex; \
   apt-get update; \
-  apt-get -y install gpg libsnappy1v5 gettext-base libjemalloc-dev wget vim lsof net-tools telnet; \
+  apt-get -y install gpg libsnappy1v5 gettext-base libjemalloc-dev wget vim lsof net-tools telnet iputils-ping; \
   rm -rf /var/lib/apt/lists/*
 
 # Grab gosu for easy step-down from root
