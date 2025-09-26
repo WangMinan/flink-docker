@@ -100,7 +100,8 @@ RUN set -ex; \
 
 # Download jars and save to the Flink lib directory
 RUN set -ex; \
-  	wget -nv -O $FLINK_HOME/lib/mysql-connector-j-8.4.0.jar "https://repo1.maven.org/maven2/com/mysql/mysql-connector-j/8.4.0/mysql-connector-j-8.4.0.jar";
+  	wget -nv -O $FLINK_HOME/lib/mysql-connector-j-8.4.0.jar "https://repo1.maven.org/maven2/com/mysql/mysql-connector-j/8.4.0/mysql-connector-j-8.4.0.jar"; \
+    wget -nv -O $FLINK_HOME/lib/kafka-client-4.0.0.jar "https://repo1.maven.org/maven2/org/apache/kafka/kafka-clients/4.0.0/kafka-clients-4.0.0.jar";
 
 # Configure container
 COPY docker-entrypoint.sh /
